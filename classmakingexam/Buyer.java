@@ -13,6 +13,10 @@ public class Buyer {
 	}
 	
 	public void buy(Seller seller, int requestCount) {
-		int actualCount = 
+		int actualCount = requestCount;
+		if (actualCount > seller.getStock()) {
+			actualCount = seller.getStock();
+		}
+		
 	}
 }
