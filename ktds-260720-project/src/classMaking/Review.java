@@ -12,7 +12,7 @@ public class Review {
 	/**
 	 * 리뷰 점수
 	 */
-	float rating;
+	double rating;
 	
 	/**
 	 * 리뷰 참가 인원
