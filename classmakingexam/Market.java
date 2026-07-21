@@ -1,6 +1,6 @@
 package com.ktdsuniversity.edu.oop.exam.classmakingexam;
 
-public class Main {
+public class Market {
 
     public static void main(String[] args) {
 
