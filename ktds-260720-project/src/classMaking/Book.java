@@ -28,5 +28,5 @@ public class Book {
 	/**
 	 * 책의 ISBN 코드
 	 */
-	String ISBN;
+	String serial;
 }
