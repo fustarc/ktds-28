@@ -46,4 +46,7 @@ public class Market {
 
         poorBuyer.buy(seller, 2);
 
-        seller.prin
+        seller.printInfo();
+        poorBuyer.printInfo();
+    }
+}
