@@ -34,7 +34,7 @@ public class Customer {
 		
 		this.fullness += dish.getFullnessIncrease();
 		this.drunkenness -= dish.getDrunkennessDecrease();
-		
+		//숙취가 음수값이 되지 않게
 		if (this.drunkenness < 0 ) {
 			this.drunkenness = 0;
 		}
@@ -70,7 +70,7 @@ public class Customer {
 			
 			this.drunkenness += alcohol.getDrunkennessIncrease();
 			this.fullness -= alcohol.getFullnessDecrease();
-			
+			//포만감이 음수값이 되지 않게
 			if (this.fullness < 0) {
 				this.fullness = 0;
 			}
