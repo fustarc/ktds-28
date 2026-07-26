@@ -14,8 +14,7 @@ public class Dish {
 	public Dish(String name, int fullnessIncrease, int drunkennessDecrease) {
 		this.name = name;
 		this.fullnessIncrease = fullnessIncrease;
-		this.drunkennessDecrease = drunkennessDecrease;
-		
+		this.drunkennessDecrease = drunkennessDecrease;		
 	}
 	
 	public String getName() {
