@@ -29,5 +29,4 @@ public class Alcohol {
         return drunkennessIncrease;
     }
 
-	
 }
