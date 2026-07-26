@@ -26,7 +26,7 @@ public class Restaurant {
 		// 보호자와 함께 방문한 미성년자 손님
 		Customer minorWithAdult = new Customer("가족", 15, familyGroup);
 		
-		System.out.println(" 웰빙 무한 레스토랑 영업 시작");
+		System.out.println("레스토랑 영업 시작");
 		
 		// 미성년자 혼자 음주
         System.out.println("혼자 온 미성년자 음주");
