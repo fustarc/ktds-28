@@ -58,7 +58,7 @@ public class Article {
     }
 
     public int getArticleId() {
-        return articleId;
+        return this.articleId;
     }
 
     public void setArticleId(int articleId) {
@@ -66,7 +66,7 @@ public class Article {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -74,7 +74,7 @@ public class Article {
     }
 
     public String getWriter() {
-        return writer;
+        return this.writer;
     }
 
     public void setWriter(String writer) {
@@ -82,7 +82,7 @@ public class Article {
     }
 
     public String getRegDate() {
-        return regDate;
+        return this.regDate;
     }
 
     public void setRegDate(String regDate) {
@@ -90,7 +90,7 @@ public class Article {
     }
 
     public int getViewCount() {
-        return viewCount;
+        return this.viewCount;
     }
 
     public void setViewCount(int viewCount) {
@@ -98,7 +98,7 @@ public class Article {
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     public void setContent(String content) {
@@ -106,7 +106,7 @@ public class Article {
     }
 
     public List<Comment> getCommentList() {
-        return commentList;
+        return this.commentList;
     }
 
     public void setCommentList(List<Comment> commentList) {
