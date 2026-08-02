@@ -1,9 +1,5 @@
 package com.ktdsuniversity.edu.oop.exam.boardexam;
 
-public interface BoardService {
-package service;
-
-
 /**
  * 게시판 및 댓글 인터페이스
  */
