@@ -3,8 +3,6 @@ package com.ktdsuniversity.edu.oop.exam.boardexam;
 public interface BoardService {
 package service;
 
-import com.ktdsuniversity.edu.oop.exam.ArticleException;
-import com.ktdsuniversity.edu.oop.exam.ArticleWriterException;
 
 /**
  * 게시판 및 댓글 인터페이스
@@ -18,8 +16,6 @@ public interface BoardService {
      * @param writer  게시글 작성자 이름 (필수 입력)
      * @param regDate 게시글 작성 날짜
      * @param content 게시글 내용
-     * @throws ArticleException       제목을 입력하지 않았거나 30자를 초과할 경우 발생
-     * @throws ArticleWriterException 작성자 이름을 입력하지 않았을 경우 발생
      */
     void createArticle(String title, String writer, String regDate, String content);
 
