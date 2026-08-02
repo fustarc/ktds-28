@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.ktdsuniversity.edu.oop.exam.boardexam.data.Article;
 import com.ktdsuniversity.edu.oop.exam.boardexam.data.Comment;
+import com.ktdsuniversity.edu.oop.exam.boardexam.inf.ArticleService;
+import com.ktdsuniversity.edu.oop.exam.boardexam.inf.CommentService;
 
 
 public class Board implements ArticleService, CommentService {
