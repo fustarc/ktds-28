@@ -42,7 +42,7 @@ public class Comment {
     }
 
     public int getCommentId() {
-        return commentId;
+        return this.commentId;
     }
 
     public void setCommentId(int commentId) {
@@ -50,7 +50,7 @@ public class Comment {
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     public void setContent(String content) {
@@ -58,7 +58,7 @@ public class Comment {
     }
 
     public String getWriter() {
-        return writer;
+        return this.writer;
     }
 
     public void setWriter(String writer) {
@@ -66,7 +66,7 @@ public class Comment {
     }
 
     public String getRegDate() {
-        return regDate;
+        return this.regDate;
     }
 
     public void setRegDate(String regDate) {
@@ -74,7 +74,7 @@ public class Comment {
     }
 
     public int getRecommendCount() {
-        return recommendCount;
+        return this.recommendCount;
     }
 
     public void setRecommendCount(int recommendCount) {
