@@ -30,9 +30,7 @@ public class Comment {
     /**
      * 댓글 생성자
      */
-    public Comment(int commentId, String content,
-                   String writer, String regDate,
-                   int recommendCount) {
+    public Comment(int commentId, String content, String writer, String regDate, int recommendCount) {
 
         this.commentId = commentId;
         this.content = content;
