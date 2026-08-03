@@ -41,7 +41,13 @@ public class Article {
     private List<Comment> commentList;
 
     /**
-     * 게시글 생성자
+     * 
+     * @param articleId 게시글 번호
+     * @param title 게시글 제목
+     * @param writer 작성자
+     * @param regDate 작성일자
+     * @param viewCount 조회수
+     * @param content 내용
      */
     public Article(int articleId, String title, String writer,
                    String regDate, int viewCount, String content) {
