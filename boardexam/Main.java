@@ -52,7 +52,10 @@ public class Main {
 
             			board.createArticle(title, writer, date, content);
             		}
-            		catch (ArticleException | ArticleWriterException awe) {
+            		catch (ArticleException e) {
+            			System.out.println(e.getMessage());
+            		}
+            		catch (ArticleWriterException awe) {
             			System.out.println(awe.getMessage());
             		}
             		break;
