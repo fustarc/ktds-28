@@ -7,6 +7,8 @@ import com.ktdsuniversity.edu.oop.exam.boardexam.data.Article;
 import com.ktdsuniversity.edu.oop.exam.boardexam.data.Comment;
 import com.ktdsuniversity.edu.oop.exam.boardexam.exceptions.ArticleException;
 import com.ktdsuniversity.edu.oop.exam.boardexam.exceptions.ArticleWriterException;
+import com.ktdsuniversity.edu.oop.exam.boardexam.inf.ArticleService;
+import com.ktdsuniversity.edu.oop.exam.boardexam.inf.CommentService;
 
 
 public class Board implements ArticleService, CommentService {
@@ -36,20 +38,20 @@ public class Board implements ArticleService, CommentService {
 
         Article article = new Article(articleId, title, writer, regDate, 0, content);
 
-        articleList.add(article);
+        this.articleList.add(article);
 
         System.out.println("게시글 작성이 완료되었습니다.");
     }
 
     @Override
     public void printAllArticles() {
-        if (articleList.isEmpty()) {
+        if (this.articleList.isEmpty()) {
             System.out.println("아직 등록된 게시글이 없습니다.");
             return;
         }
 
-        for (int i = 0; i < articleList.size(); i++) {
-            Article article = articleList.get(i);
+        for (int i = 0; i < this.articleList.size(); i++) {
+            Article article = this.articleList.get(i);
             System.out.println(article.getArticleId() + ". "
                     + article.getTitle() + " ("
                     + article.getCommentList().size() + ")");
@@ -58,12 +60,12 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void printArticleByNumber(int articleId) {
-        if (articleId < 0 || articleId >= articleList.size()) {
+        if (articleId < 0 || articleId >= this.articleList.size()) {
             System.out.println("잘못된 게시글 번호입니다.");
             return;
         }
 
-        Article article = articleList.get(articleId);
+        Article article = this.articleList.get(articleId);
 
         article.setViewCount(article.getViewCount() + 1);
 
@@ -92,12 +94,20 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void updateArticle(int articleId, String newTitle, String newContent) {
-        if (articleId < 0 || articleId >= articleList.size()) {
+        if (articleId < 0 || articleId >= this.articleList.size()) {
             System.out.println("잘못된 게시글 번호입니다.");
             return;
         }
+        
+        if (newTitle == null || newTitle.trim().isEmpty()) {
+            throw new ArticleException("게시글 제목은 필수 입력입니다.");
+        }
 
-        Article article = articleList.get(articleId);
+        if (newTitle.trim().length() > 30) {
+            throw new ArticleException("게시글 제목은 30자를 초과할 수 없습니다.");
+        }
+
+        Article article = this.articleList.get(articleId);
         article.setTitle(newTitle);
         article.setContent(newContent);
 
@@ -106,15 +116,15 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void deleteArticle(int articleId) {
-        if (articleId < 0 || articleId >= articleList.size()) {
+        if (articleId < 0 || articleId >= this.articleList.size()) {
             System.out.println("잘못된 게시글 번호입니다.");
             return;
         }
 
-        articleList.remove(articleId);
+        this.articleList.remove(articleId);
 
-        for (int i = 0; i < articleList.size(); i++) {
-            articleList.get(i).setArticleId(i);
+        for (int i = 0; i < this.articleList.size(); i++) {
+        	this.articleList.get(i).setArticleId(i);
         }
 
         System.out.println("게시글이 삭제되었습니다.");
@@ -122,20 +132,20 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void printArticleCount() {
-        if (articleList.isEmpty()) {
+        if (this.articleList.isEmpty()) {
             System.out.println("등록된 게시글이 없습니다.");
             return;
         }
 
-        System.out.println(articleList.size() + "개의 게시글이 등록되었습니다.");
+        System.out.println(this.articleList.size() + "개의 게시글이 등록되었습니다.");
     }
 
     @Override
     public void searchArticlesByTitle(String keyword) {
         boolean found = false;
 
-        for (int i = 0; i < articleList.size(); i++) {
-            Article article = articleList.get(i);
+        for (int i = 0; i < this.articleList.size(); i++) {
+            Article article = this.articleList.get(i);
 
             if (article.getTitle().contains(keyword)) {
                 found = true;
@@ -150,25 +160,25 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void deleteAllArticles() {
-        if (articleList.isEmpty()) {
+        if (this.articleList.isEmpty()) {
             System.out.println("제거할 게시글이 없습니다.");
             return;
         }
 
-        int count = articleList.size();
-        articleList.clear();
+        int count = this.articleList.size();
+        this.articleList.clear();
 
         System.out.println(count + "개의 게시글을 삭제했습니다.");
     }
 
     @Override
     public void createComment(int articleId, String content, String writer, String regDate) {
-        if (articleId < 0 || articleId >= articleList.size()) {
+        if (articleId < 0 || articleId >= this.articleList.size()) {
             System.out.println("잘못된 게시글 번호입니다.");
             return;
         }
 
-        Article article = articleList.get(articleId);
+        Article article = this.articleList.get(articleId);
 
         if (article.getCommentList().size() >= 10) {
             System.out.println("댓글을 더 이상 등록할 수 없습니다.");
@@ -186,12 +196,12 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void deleteComment(int articleId, int commentId) {
-        if (articleId < 0 || articleId >= articleList.size()) {
+        if (articleId < 0 || articleId >= this.articleList.size()) {
             System.out.println("잘못된 게시글 번호입니다.");
             return;
         }
 
-        Article article = articleList.get(articleId);
+        Article article = this.articleList.get(articleId);
 
         if (commentId < 0 || commentId >= article.getCommentList().size()) {
             System.out.println("잘못된 댓글 번호입니다.");
@@ -209,12 +219,12 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void recommendComment(int articleId, int commentId) {
-        if (articleId < 0 || articleId >= articleList.size()) {
+        if (articleId < 0 || articleId >= this.articleList.size()) {
             System.out.println("잘못된 게시글 번호입니다.");
             return;
         }
 
-        Article article = articleList.get(articleId);
+        Article article = this.articleList.get(articleId);
 
         if (commentId < 0 || commentId >= article.getCommentList().size()) {
             System.out.println("잘못된 댓글 번호입니다.");
@@ -229,12 +239,12 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void deleteAllComments(int articleId) {
-        if (articleId < 0 || articleId >= articleList.size()) {
+        if (articleId < 0 || articleId >= this.articleList.size()) {
             System.out.println("잘못된 게시글 번호입니다.");
             return;
         }
 
-        Article article = articleList.get(articleId);
+        Article article = this.articleList.get(articleId);
 
         if (article.getCommentList().isEmpty()) {
             System.out.println("등록된 댓글이 없습니다.");
