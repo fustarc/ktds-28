@@ -31,7 +31,13 @@ public class Main {
             System.out.println("0. 종료");
             System.out.print("선택 : ");
 
-            menu = Integer.parseInt(keyboard.nextLine());
+            try { 
+            	menu = Integer.parseInt(keyboard.nextLine());
+            }
+            catch (NumberFormatException e) {
+            	System.out.println("메뉴는 숫자만 입력해주세요");
+            	continue;
+            }
 
             switch(menu) {
 
