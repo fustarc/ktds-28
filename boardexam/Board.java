@@ -16,7 +16,7 @@ public class Board implements ArticleService, CommentService {
     private List<Article> articleList;
 
     public Board() {
-        articleList = new ArrayList<Article>();
+        articleList = new ArrayList<>();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void printAllArticles() {
-        if (this.articleList.isEmpty()) {
+        if (this.articleList.size() <= 0) {
             System.out.println("아직 등록된 게시글이 없습니다.");
             return;
         }
@@ -76,7 +76,7 @@ public class Board implements ArticleService, CommentService {
         System.out.println("조회수 : " + article.getViewCount());
         System.out.println("내용 : " + article.getContent());
 
-        if (article.getCommentList().isEmpty()) {
+        if (article.getCommentList().size() <= 0) {
             System.out.println("등록된 댓글이 없습니다.");
             return;
         }
@@ -132,7 +132,7 @@ public class Board implements ArticleService, CommentService {
 
     @Override
     public void printArticleCount() {
-        if (this.articleList.isEmpty()) {
+        if (this.articleList.size() <= 0) {
             System.out.println("등록된 게시글이 없습니다.");
             return;
         }
@@ -246,7 +246,7 @@ public class Board implements ArticleService, CommentService {
 
         Article article = this.articleList.get(articleId);
 
-        if (article.getCommentList().isEmpty()) {
+        if (article.getCommentList().size() <= 0) {
             System.out.println("등록된 댓글이 없습니다.");
             return;
         }
