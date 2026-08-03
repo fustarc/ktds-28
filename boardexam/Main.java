@@ -31,116 +31,149 @@ public class Main {
             System.out.println("0. 종료");
             System.out.print("선택 : ");
 
-            try { 
-            	menu = Integer.parseInt(keyboard.nextLine());
-            }
-            catch (NumberFormatException e) {
-            	System.out.println("메뉴는 숫자만 입력해주세요");
-            	continue;
-            }
 
-            switch(menu) {
+            menu = inputNumber(keyboard);
+            
+            while (menu != 0 ) {
 
-            case 1:
-                try {
-                    System.out.print("제목 : ");
-                    String title = keyboard.nextLine();
+            	if (menu == 1) {
+            		try {
+            			System.out.print("제목 : ");
+            			String title = keyboard.nextLine();
 
-                    System.out.print("작성자 : ");
-                    String writer = keyboard.nextLine();
+            			System.out.print("작성자 : ");
+            			String writer = keyboard.nextLine();
 
-                    System.out.print("작성일 : ");
-                    String date = keyboard.nextLine();
+            			System.out.print("작성일 : ");
+            			String date = keyboard.nextLine();
 
-                    System.out.print("내용 : ");
-                    String content = keyboard.nextLine();
+            			System.out.print("내용 : ");
+            			String content = keyboard.nextLine();
 
-                    board.createArticle(title, writer, date, content);
-                }
-                catch (ArticleException | ArticleWriterException e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
+            			board.createArticle(title, writer, date, content);
+            		}
+            		catch (ArticleException | ArticleWriterException awe) {
+            			System.out.println(awe.getMessage());
+            		}
+            		break;
+            		
+            	}
 
-            case 2:
-                board.printAllArticles();
-                break;
+            	else if (menu == 2) {
+            		board.printAllArticles();
+            		break;
+            	}
+                
+            	else if (menu == 3) {
+            		System.out.print("게시글 번호 : ");
+            		board.printArticleByNumber(inputNumber(keyboard));
+            		break;
+            	}
+                
+            	else if (menu == 4) {
+            		System.out.print("게시글 번호 : ");
+            		int aid = inputNumber(keyboard);
+            		System.out.print("새 제목 : ");
+            		String nt = keyboard.nextLine();
+            		System.out.print("새 내용 : ");
+            		String nc = keyboard.nextLine();
+            		board.updateArticle(aid, nt, nc);
+            		break;
+            	}
+            
+            	else if (menu == 5) {
+            		System.out.print("게시글 번호 : ");
+            		board.deleteArticle(inputNumber(keyboard));
+            		break;
 
-            case 3:
-                System.out.print("게시글 번호 : ");
-                board.printArticleByNumber(Integer.parseInt(keyboard.nextLine()));
-                break;
+            	}
 
-            case 4:
-                System.out.print("게시글 번호 : ");
-                int aid = Integer.parseInt(keyboard.nextLine());
-                System.out.print("새 제목 : ");
-                String nt = keyboard.nextLine();
-                System.out.print("새 내용 : ");
-                String nc = keyboard.nextLine();
-                board.updateArticle(aid, nt, nc);
-                break;
+            	else if (menu == 6) {
+            		board.printArticleCount();
+            		break;
 
-            case 5:
-                System.out.print("게시글 번호 : ");
-                board.deleteArticle(Integer.parseInt(keyboard.nextLine()));
-                break;
+            	}
 
-            case 6:
-                board.printArticleCount();
-                break;
+            	else if (menu == 7) {
+            		System.out.print("게시글 번호 : ");
+            		int aid = inputNumber(keyboard);
+            		System.out.print("댓글 내용 : ");
+            		String cc = keyboard.nextLine();
+            		System.out.print("작성자 : ");
+            		String cw = keyboard.nextLine();
+            		System.out.print("작성일 : ");
+            		String cd = keyboard.nextLine();
+            		board.createComment(aid, cc, cw, cd);
+            		break;
+            	}
 
-            case 7:
-                System.out.print("게시글 번호 : ");
-                int a = Integer.parseInt(keyboard.nextLine());
-                System.out.print("댓글 내용 : ");
-                String cc = keyboard.nextLine();
-                System.out.print("작성자 : ");
-                String cw = keyboard.nextLine();
-                System.out.print("작성일 : ");
-                String cd = keyboard.nextLine();
-                board.createComment(a, cc, cw, cd);
-                break;
+            	else if (menu == 8) {
+            		System.out.print("게시글 번호 : ");
+            		int da = inputNumber(keyboard);
+            		System.out.print("댓글 번호 : ");
+            		int dc = inputNumber(keyboard);
+                	board.deleteComment(da, dc);
+                	break;
+            	}
 
-            case 8:
-                System.out.print("게시글 번호 : ");
-                int da = Integer.parseInt(keyboard.nextLine());
-                System.out.print("댓글 번호 : ");
-                int dc = Integer.parseInt(keyboard.nextLine());
-                board.deleteComment(da, dc);
-                break;
+            	else if (menu == 9) {
+            		System.out.print("게시글 번호 : ");
+            		int ra = inputNumber(keyboard);
+            		System.out.print("댓글 번호 : ");
+            		int rc = inputNumber(keyboard);
+            		board.recommendComment(ra, rc);
+            		break;
+            	}
 
-            case 9:
-                System.out.print("게시글 번호 : ");
-                int ra = Integer.parseInt(keyboard.nextLine());
-                System.out.print("댓글 번호 : ");
-                int rc = Integer.parseInt(keyboard.nextLine());
-                board.recommendComment(ra, rc);
-                break;
+            	else if (menu == 10) {
+            		System.out.print("검색어 : ");
+                	board.searchArticlesByTitle(keyboard.nextLine());
+                	break;
+            	}
 
-            case 10:
-                System.out.print("검색어 : ");
-                board.searchArticlesByTitle(keyboard.nextLine());
-                break;
+            	else if (menu == 11) {
+            		board.deleteAllArticles();
+            		break;
+            	}
 
-            case 11:
-                board.deleteAllArticles();
-                break;
+            	else if (menu == 12) {
+            		System.out.print("게시글 번호 : ");
+            		board.deleteAllComments(inputNumber(keyboard));
+            		break;
+            	}
 
-            case 12:
-                System.out.print("게시글 번호 : ");
-                board.deleteAllComments(Integer.parseInt(keyboard.nextLine()));
-                break;
+            	else if (menu == 0) {
+            		System.out.println("프로그램을 종료합니다.");
+            		break;
+            	}
 
-            case 0:
-                System.out.println("프로그램을 종료합니다.");
-                break;
-
-            default:
-                System.out.println("잘못된 메뉴입니다.");
+            	else {
+            		System.out.println("잘못된 메뉴입니다.");
+            		break;
+            	}
             }
         }
 
         keyboard.close();
+    }
+    
+    public static int inputNumber(Scanner keyboard) {
+    	
+    	while(true) {
+		
+    		String input = keyboard.nextLine();
+    		
+    		if (input.trim().isEmpty()) {
+    			System.out.println("내용을 입력해주세요.");
+    			continue;
+    		}
+    		
+    		try {
+    			return Integer.parseInt(input.trim());    			
+    		} 
+    		catch (NumberFormatException nfe) {
+    			System.out.println("숫자만 입력해주세요.");
+    		}
+    	}
     }
 }
