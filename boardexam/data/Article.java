@@ -49,8 +49,7 @@ public class Article {
      * @param viewCount 조회수
      * @param content 내용
      */
-    public Article(int articleId, String title, String writer,
-                   String regDate, int viewCount, String content) {
+    public Article(int articleId, String title, String writer, String regDate, int viewCount, String content) {
 
         this.articleId = articleId;
         this.title = title;
