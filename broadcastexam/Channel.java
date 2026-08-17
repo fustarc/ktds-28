@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 방송사 정보 및 해당 방송사의 프로그램 목록(Has-A)을 관리하는 클래스
+ * 방송사 정보 및 해당 방송사의 프로그램 목록을 관리하는 클래스
  */
 public class Channel {
     private final String channelName;
