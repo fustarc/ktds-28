@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 여러 방송사(Has-A)를 등록하고 상태를 일괄 출력하는 서비스 클래스
+ * 여러 방송사를 등록하고 상태를 일괄 출력하는 서비스 클래스
  */
 public class BroadcastingService {
     private final List<Channel> channels; // BroadcastingService Has A List<Channel>
